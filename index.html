@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחשבון שכר נטו והכנסה פנויה 2026 | ירדן קובי</title>
+    <meta name="description" content="מחשבון שכר נטו לפי תלוש/שומה כולל נקודות זיכוי ותוספת מילואים, ומחשבון הכנסה פנויה/כושר החזר בהתאם להוראת בנק ישראל המעודכנת ליולי 2026.">
+    <link rel="canonical" href="https://salary-calc.yardenkoubi.com/">
+    <meta property="og:title" content="מחשבון שכר נטו והכנסה פנויה | ירדן קובי">
+    <meta property="og:description" content="שכר נטו מדויק + בדיקת הכנסה פנויה וכושר החזר לפי כללי בנק ישראל 2026.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://salary-calc.yardenkoubi.com/">
+    <meta property="og:locale" content="he_IL">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+    :root {
+        --bd: #1e3a8a; --b: #2563eb; --bl: #60a5fa; --am: #f59e0b;
+        --g50: #f8fafc; --g200: #e2e8f0; --g400: #94a3b8; --g600: #475569; --g800: #1e293b;
+        --sh: 0 8px 32px rgba(0,0,0,.10); --r: 14px; --rs: 9px
+    }
+    body { font-family:'Assistant','Heebo',sans-serif; background:linear-gradient(135deg,#e8f0fe,#f0f9ff,#fefce8); min-height:100vh; padding:24px 14px 48px; color:var(--g800) }
+    .w { max-width: 960px; margin: 0 auto }
+    .hd { text-align:center; margin-bottom:20px }
+    .badge { display:inline-flex; align-items:center; gap:6px; background:var(--bd); color:#fff; font-size:12px; font-weight:700; padding:4px 13px; border-radius:20px; margin-bottom:9px }
+    .hd h1 { font-family:'Heebo',sans-serif; font-weight:900; font-size:clamp(22px,5.2vw,32px); background:linear-gradient(135deg,var(--bd),var(--b),var(--bl)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1.25; margin-bottom:8px }
+    .hd p { color:var(--g600); font-size:13.5px; max-width:600px; margin:0 auto; line-height:1.55 }
+    .tabs { display:flex; gap:8px; margin-bottom:18px; background:#fff; border-radius:var(--r); padding:6px; box-shadow:var(--sh) }
+    .tab { flex:1; text-align:center; padding:11px; border-radius:9px; font-weight:800; font-size:13.5px; cursor:pointer; color:var(--g600) }
+    .tab.active { background:linear-gradient(135deg,var(--bd),var(--b)); color:#fff }
+    .part { display:none }
+    .part.active { display:block }
+    .modesel { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px }
+    .modebtn { flex:1; min-width:130px; text-align:center; padding:10px 8px; border-radius:9px; font-weight:800; font-size:12px; cursor:pointer; background:var(--g50); border:1.5px solid var(--g200); color:var(--g600) }
+    .modebtn.active { background:linear-gradient(135deg,var(--bd),var(--b)); color:#fff; border-color:transparent }
+    .modeblock { display:none }
+    .modeblock.active { display:block }
+    .cmp { background:#eff6ff; border:1.5px solid #bfdbfe; border-radius:9px; padding:10px 13px; font-size:12.5px; color:var(--bd); margin-top:10px; font-weight:600 }
+    .sec { background:#fff; border-radius:var(--r); box-shadow:var(--sh); padding:18px; margin-bottom:16px }
+    .sec h2 { font-family:'Heebo',sans-serif; font-weight:900; font-size:16px; color:var(--bd); margin-bottom:12px }
+    .grid3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px }
+    .fld label { display:block; font-size:12px; font-weight:700; color:var(--g600); margin-bottom:4px }
+    .fld input, .fld select { width:100%; padding:9px 10px; border:1.5px solid var(--g200); border-radius:8px; font-size:14px; font-family:inherit }
+    .fld input:focus, .fld select:focus { outline:none; border-color:var(--b) }
+    .hint { font-size:11px; color:var(--g400); margin-top:3px }
+    .res h2 { font-family:'Heebo',sans-serif; font-weight:900; font-size:18px; color:var(--bd); margin-bottom:14px }
+    .rgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-bottom:16px }
+    .rbox { background:var(--g50); border-radius:var(--rs); padding:13px; text-align:center }
+    .rbox strong { display:block; font-size:18px; color:var(--bd); font-weight:900 }
+    .rbox span { font-size:11px; color:var(--g600) }
+    .rbox.big strong { font-size:24px }
+    .rbox.warn strong { color:#b91c1c }
+    .rbox.ok strong { color:#15803d }
+    table.res-table { width:100%; border-collapse:collapse; font-size:12.5px }
+    table.res-table th { background:var(--g50); color:var(--bd); font-weight:800; padding:6px 5px; text-align:center; border-bottom:2px solid var(--g200) }
+    table.res-table td { padding:6px 5px; text-align:center; border-bottom:1px solid var(--g200); color:var(--g600) }
+    .obl-row { display:grid; grid-template-columns:1fr 1fr auto; gap:8px; margin-bottom:8px; align-items:end }
+    .obl-row input { width:100%; padding:8px 9px; border:1.5px solid var(--g200); border-radius:8px; font-size:13px }
+    .rm { color:#b91c1c; cursor:pointer; font-size:18px; padding:8px }
+    .addbtn { padding:9px 15px; border:2px dashed var(--g200); background:#fff; border-radius:9px; color:var(--g600); font-weight:800; font-size:12.5px; cursor:pointer; margin-top:6px }
+    .addbtn:hover { border-color:var(--b); color:var(--b) }
+    .nbox { background:#fff8e1; border:1.5px solid #fde68a; border-radius:9px; padding:11px 13px; font-size:12.5px; color:#7c5e00; margin-top:12px; font-weight:600; line-height:1.6 }
+    .ratio-row { display:flex; align-items:center; gap:10px; margin-top:10px }
+    .ratio-row input[type=range] { flex:1 }
+    .cta { background:linear-gradient(135deg,var(--bd),var(--b)); color:#fff; border-radius:var(--r); padding:20px; text-align:center }
+    .cta h3 { font-family:'Heebo',sans-serif; font-weight:900; font-size:17px; margin-bottom:5px }
+    .cta p { font-size:13px; opacity:.9; margin-bottom:13px }
+    .ctab { display:flex; gap:8px; justify-content:center; flex-wrap:wrap }
+    .bph { display:inline-flex; align-items:center; gap:5px; background:var(--am); color:#1a1200; padding:9px 17px; border-radius:30px; font-weight:900; font-size:13.5px; text-decoration:none }
+    .bwa { display:inline-flex; align-items:center; gap:5px; background:#25d366; color:#fff; padding:9px 17px; border-radius:30px; font-weight:900; font-size:13.5px; text-decoration:none }
+    .back-home { position:fixed; bottom:20px; left:20px; z-index:9999; display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,var(--bd),var(--b)); color:#fff; padding:10px 18px; border-radius:30px; font-family:'Heebo',sans-serif; font-weight:800; font-size:13px; text-decoration:none; box-shadow:0 4px 16px rgba(30,58,138,.35) }
+    </style>
+</head>
+<body>
+    <div class="w">
+        <div class="hd">
+            <div class="badge">💼 מחשבון | ירדן קובי — יועץ משכנתאות</div>
+            <h1>מחשבון שכר נטו והכנסה פנויה</h1>
+            <p>חלק א׳: שכר נטו מדויק כולל נקודות זיכוי ותוספת מילואים | חלק ב׳: הכנסה פנויה וכושר החזר לפי כללי בנק ישראל המעודכנים ל-2026</p>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="p1">חלק א׳ - שכר נטו</div>
+            <div class="tab" data-tab="p2">חלק ב׳ - הכנסה פנויה</div>
+        </div>
+
+        <!-- PART 1: NET SALARY -->
+        <div class="part active" id="p1">
+            <div class="modesel">
+                <div class="modebtn active" data-mode="gross">שכיר - לפי ברוטו</div>
+                <div class="modebtn" data-mode="cum">שכיר - נתונים מצטברים</div>
+                <div class="modebtn" data-mode="avg3">שכיר - ממוצע 3 תלושים</div>
+                <div class="modebtn" data-mode="selfemp">עצמאי - לפי שומה</div>
+            </div>
+
+            <!-- Mode: gross-based bracket calculation -->
+            <div class="modeblock active" id="mode-gross">
+                <div class="sec">
+                    <h2>⚙️ נתוני שכר (מהתלוש)</h2>
+                    <div class="grid3">
+                        <div class="fld"><label>שכר ברוטו חודשי (₪)</label><input type="number" id="gross" value="15000"></div>
+                        <div class="fld"><label>נקודות זיכוי (מהתלוש)</label><input type="number" step="0.25" id="points" value="2.25"></div>
+                    </div>
+                </div>
+                <div class="sec">
+                    <h2>🎖️ תוספת מילואים (סעיף 39ב - לוחמים בלבד)</h2>
+                    <p style="font-size:12.5px;color:var(--g600);margin-bottom:10px">רלוונטי רק לשירות מילואים <strong>כלוחם</strong> (לפי אישור מצה"ל), בהתאם לימי השירות ב<strong>שנה הקודמת</strong>. בתוקף לשנות המס 2026-2027.</p>
+                    <div class="grid3">
+                        <div class="fld"><label>ימי מילואים כלוחם בשנה הקודמת</label><input type="number" id="miluimDays" value="0"></div>
+                    </div>
+                    <div class="hint" id="miluimHint">מתחת ל-30 ימים: אין תוספת נקודות</div>
+                </div>
+                <div class="sec res">
+                    <h2>📊 תוצאה - שכר נטו מחושב</h2>
+                    <div class="rgrid">
+                        <div class="rbox big ok"><strong id="rNet">-</strong><span>שכר נטו חודשי</span></div>
+                        <div class="rbox"><strong id="rTaxPoints">-</strong><span>סה"כ נקודות זיכוי (כולל מילואים)</span></div>
+                        <div class="rbox"><strong id="rTax">-</strong><span>מס הכנסה (אחרי זיכוי)</span></div>
+                        <div class="rbox"><strong id="rNiHealth">-</strong><span>ביטוח לאומי + בריאות</span></div>
+                    </div>
+                    <table class="res-table">
+                        <thead><tr><th>רכיב</th><th>סכום חודשי</th></tr></thead>
+                        <tbody id="p1Body"></tbody>
+                    </table>
+                    <div class="nbox">💡 חישוב זה מבוסס על מדרגות המס, ביטוח לאומי ובריאות ושווי נקודת הזיכוי הרשמיים לשנת 2026 (242 ₪ לנקודה).</div>
+                </div>
+            </div>
+
+            <!-- Mode: cumulative payslip data -->
+            <div class="modeblock" id="mode-cum">
+                <div class="sec">
+                    <h2>📈 נתונים מצטברים (מהתלוש העדכני ביותר)</h2>
+                    <p style="font-size:12.5px;color:var(--g600);margin-bottom:10px">מקובל בבדיקת יכולת החזר - הכנסה נטו ממוצעת על סמך הנתונים המצטברים בפועל בתלוש, מחולקת במספר חודשי העבודה.</p>
+                    <div class="grid3">
+                        <div class="fld"><label>שכר ברוטו מצטבר (₪)</label><input type="number" id="cumGross" value="120000"></div>
+                        <div class="fld"><label>מס הכנסה מצטבר (₪)</label><input type="number" id="cumTax" value="18000"></div>
+                        <div class="fld"><label>ביטוח לאומי+בריאות מצטבר (₪)</label><input type="number" id="cumNiHealth" value="10800"></div>
+                        <div class="fld"><label>מספר חודשי עבודה בפועל</label><input type="number" id="cumMonths" value="11"></div>
+                        <div class="fld"><label>תשלום חד-פעמי לניכוי (₪, אופציונלי)</label><input type="number" id="cumOneTime" value="0"></div>
+                    </div>
+                </div>
+                <div class="sec res">
+                    <h2>📊 תוצאה - שכר נטו ממוצע (מצטבר)</h2>
+                    <div class="rgrid">
+                        <div class="rbox big ok"><strong id="rNetCum">-</strong><span>שכר נטו ממוצע לחודש</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mode: 3-month average -->
+            <div class="modeblock" id="mode-avg3">
+                <div class="sec">
+                    <h2>🧾 3 תלושי השכר האחרונים (נטו שהופקד בחשבון)</h2>
+                    <div class="grid3">
+                        <div class="fld"><label>נטו - חודש נוכחי (₪)</label><input type="number" id="net1" value="9000"></div>
+                        <div class="fld"><label>נטו - חודש קודם (₪)</label><input type="number" id="net2" value="9000"></div>
+                        <div class="fld"><label>נטו - לפני חודשיים (₪)</label><input type="number" id="net3" value="9000"></div>
+                    </div>
+                </div>
+                <div class="sec res">
+                    <h2>📊 תוצאה - ממוצע 3 חודשים</h2>
+                    <div class="rgrid">
+                        <div class="rbox big ok"><strong id="rNetAvg3">-</strong><span>שכר נטו ממוצע (3 תלושים)</span></div>
+                    </div>
+                    <div class="cmp" id="avg3Cmp"></div>
+                </div>
+            </div>
+
+            <!-- Mode: self-employed -->
+            <div class="modeblock" id="mode-selfemp">
+                <div class="sec">
+                    <h2>🧮 עצמאי - לפי שומת מס קודמת</h2>
+                    <p style="font-size:12.5px;color:var(--g600);margin-bottom:10px">יש להזין מטופס "הצהרה על הכנסות" (2708) את ההכנסה החייבת במס (סעיף ג.1) לשנה הקודמת.</p>
+                    <div class="grid3">
+                        <div class="fld"><label>הכנסה חייבת במס - שנה קודמת (₪ שנתי)</label><input type="number" id="selfIncomeYear" value="150000"></div>
+                    </div>
+                </div>
+                <div class="sec">
+                    <h2>📄 אישור רואה חשבון לשנה השוטפת (אופציונלי)</h2>
+                    <p style="font-size:12.5px;color:var(--g600);margin-bottom:10px">אם יש אישור רו"ח על הכנסה עדכנית יותר - ניתן להזין אותו לצורך עדכון הממוצע. אינו חובה.</p>
+                    <div class="grid3">
+                        <div class="fld"><label>הכנסה לפי אישור רו"ח (₪)</label><input type="number" id="selfCpaIncome" value="0"></div>
+                        <div class="fld"><label>מספר חודשים שהאישור מתייחס אליהם</label><input type="number" id="selfCpaMonths" value="0"></div>
+                    </div>
+                </div>
+                <div class="sec res">
+                    <h2>📊 תוצאה - הכנסה חודשית ממוצעת (עצמאי)</h2>
+                    <div class="rgrid">
+                        <div class="rbox"><strong id="rSelfYearAvg">-</strong><span>ממוצע חודשי - שנה קודמת</span></div>
+                        <div class="rbox big ok"><strong id="rSelfFinal">-</strong><span>הכנסה חודשית לשימוש</span></div>
+                    </div>
+                    <div class="cmp" id="selfCmp"></div>
+                    <div class="nbox">⚠️ שימו לב: זהו אומדן להכנסה החייבת במס, לא שכר נטו סופי - עבור עצמאי יש לקחת בחשבון גם מקדמות מס, ביטוח לאומי עצמאי וניכויים נוספים בהתאם למצב הספציפי.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PART 2: DISPOSABLE INCOME -->
+        <div class="part" id="p2">
+            <div class="sec">
+                <h2>💰 הכנסה נטו חודשית</h2>
+                <div class="grid3">
+                    <div class="fld"><label>הכנסה נטו חודשית (₪)</label><input type="number" id="netIncome" value="9000"></div>
+                </div>
+                <div class="hint">אפשר להשתמש בתוצאה מחלק א׳, או להזין ישירות (כולל הכנסות נוספות: שכירות, קצבאות וכו')</div>
+            </div>
+
+            <div class="sec">
+                <h2>📋 התחייבויות קבועות מעל 18 חודש</h2>
+                <p style="font-size:12.5px;color:var(--g600);margin-bottom:10px">הזינו כל הלוואה/משכנתא קיימת/מזונות שנותרו בה יותר מ-18 תשלומים - <strong>כולל משכנתאות קיימות על הנכס</strong> (מ-1.7.2026 בנק ישראל מחייב לצרף את כולן יחד, לא לבדוק כל הלוואה בנפרד).</p>
+                <div id="oblList"></div>
+                <button class="addbtn" id="addOblBtn">+ הוסף התחייבות</button>
+            </div>
+
+            <div class="sec">
+                <h2>🎚️ יחס החזר לבדיקה</h2>
+                <div class="ratio-row">
+                    <span style="font-size:12.5px;font-weight:700;color:var(--g600)">10%</span>
+                    <input type="range" id="ratio" min="10" max="50" value="35">
+                    <span style="font-size:12.5px;font-weight:700;color:var(--g600)">50%</span>
+                    <strong id="ratioVal" style="min-width:44px;text-align:center;color:var(--bd)">35%</strong>
+                </div>
+                <div class="hint" id="ratioHint"></div>
+            </div>
+
+            <div class="sec res">
+                <h2>📊 תוצאה - הכנסה פנויה וכושר החזר</h2>
+                <div class="rgrid">
+                    <div class="rbox"><strong id="rObl">-</strong><span>סה"כ התחייבויות קיימות</span></div>
+                    <div class="rbox ok big"><strong id="rDisposable">-</strong><span>הכנסה פנויה</span></div>
+                    <div class="rbox big"><strong id="rMaxPay">-</strong><span>החזר חודשי מקסימלי אפשרי (למשכנתא חדשה)</span></div>
+                </div>
+                <div class="nbox" id="ptiWarn"></div>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h3>💡 רוצים בדיקה מדויקת ומלאה של התיק שלכם?</h3>
+            <p>ירדן קובי — יועץ משכנתאות מוסמך | ייעוץ ראשוני ללא עלות</p>
+            <div class="ctab">
+                <a href="tel:0533030629" class="bph">📞 053-303-0629</a>
+                <a href="https://wa.me/972533030629" target="_blank" class="bwa">💬 וואטסאפ</a>
+            </div>
+        </div>
+    </div>
+    <a href="https://yardenkoubi.com" class="back-home">🏠 חזרה לאתר הראשי</a>
+
+    <script>
+    // ===== Tabs =====
+    document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+        document.querySelectorAll('.part').forEach(x => x.classList.remove('active'));
+        t.classList.add('active');
+        document.getElementById(t.dataset.tab).classList.add('active');
+    }));
+
+    function fmt(n){ return '₪' + Math.round(n).toLocaleString('he-IL'); }
+
+    // ===== PART 1: Net salary (2026 verified figures) =====
+    const CREDIT_POINT_MONTHLY = 242;
+    // Monthly income tax brackets 2026 (from gov.il)
+    const TAX_BRACKETS = [
+        {upTo: 7010, rate: 0.10},
+        {upTo: 10060, rate: 0.14},
+        {upTo: 19000, rate: 0.20},
+        {upTo: 25100, rate: 0.31},
+        {upTo: 46690, rate: 0.35},
+        {upTo: Infinity, rate: 0.47}
+    ];
+    const NI_REDUCED_THRESHOLD = 7703;
+    const NI_CEILING = 51910;
+    const NI_RATE_LOW = 0.0104, NI_RATE_HIGH = 0.07;
+    const HEALTH_RATE_LOW = 0.0323, HEALTH_RATE_HIGH = 0.0517;
+
+    function calcIncomeTax(monthly){
+        let tax = 0, prev = 0;
+        for(const b of TAX_BRACKETS){
+            if(monthly > prev){
+                const taxableInBracket = Math.min(monthly, b.upTo) - prev;
+                tax += taxableInBracket * b.rate;
+                prev = b.upTo;
+            } else break;
+        }
+        return tax;
+    }
+
+    function calcNiHealth(monthly){
+        const base = Math.min(monthly, NI_REDUCED_THRESHOLD);
+        const excess = Math.max(0, Math.min(monthly, NI_CEILING) - NI_REDUCED_THRESHOLD);
+        const ni = base * NI_RATE_LOW + excess * NI_RATE_HIGH;
+        const health = base * HEALTH_RATE_LOW + excess * HEALTH_RATE_HIGH;
+        return {ni, health};
+    }
+
+    function miluimBonusPoints(days){
+        if(days < 30) return 0;
+        if(days <= 39) return 0.5;
+        if(days <= 49) return 0.75;
+        // 50+: 1 point, plus 0.25 per additional 5 days beyond 50, capped at 4 total
+        let pts = 1 + Math.floor((days-50)/5) * 0.25;
+        return Math.min(pts, 4);
+    }
+
+    function calcP1(){
+        const gross = parseFloat(document.getElementById('gross').value)||0;
+        const basePoints = parseFloat(document.getElementById('points').value)||0;
+        const miluimDays = parseFloat(document.getElementById('miluimDays').value)||0;
+        const bonusPts = miluimBonusPoints(miluimDays);
+        const totalPoints = basePoints + bonusPts;
+
+        document.getElementById('miluimHint').textContent = bonusPts > 0
+            ? `${miluimDays} ימי שירות → תוספת של ${bonusPts} נקודות זיכוי (סעיף 39ב)`
+            : 'מתחת ל-30 ימים: אין תוספת נקודות (או 0 ימים הוזנו)';
+
+        const grossTax = calcIncomeTax(gross);
+        const credit = totalPoints * CREDIT_POINT_MONTHLY;
+        const netTax = Math.max(0, grossTax - credit);
+        const {ni, health} = calcNiHealth(gross);
+        const net = gross - netTax - ni - health;
+
+        document.getElementById('rNet').textContent = fmt(net);
+        document.getElementById('rTaxPoints').textContent = totalPoints.toFixed(2);
+        document.getElementById('rTax').textContent = fmt(netTax);
+        document.getElementById('rNiHealth').textContent = fmt(ni+health);
+
+        document.getElementById('p1Body').innerHTML = `
+            <tr><td>שכר ברוטו</td><td>${fmt(gross)}</td></tr>
+            <tr><td>מס הכנסה (לפני זיכוי)</td><td>${fmt(grossTax)}</td></tr>
+            <tr><td>זיכוי מנקודות (${totalPoints.toFixed(2)} נק')</td><td>-${fmt(credit)}</td></tr>
+            <tr><td>מס הכנסה לתשלום</td><td>${fmt(netTax)}</td></tr>
+            <tr><td>ביטוח לאומי</td><td>${fmt(ni)}</td></tr>
+            <tr><td>ביטוח בריאות</td><td>${fmt(health)}</td></tr>
+            <tr><td><strong>שכר נטו</strong></td><td><strong>${fmt(net)}</strong></td></tr>`;
+
+        return net;
+    }
+
+    ['gross','points','miluimDays'].forEach(id => document.getElementById(id).addEventListener('input', calcP1));
+
+    // ===== PART 2: Disposable income / repayment capacity =====
+    let obligations = [
+        {name: 'הלוואת רכב', amount: 1500},
+        {name: 'משכנתא קיימת', amount: 3000}
+    ];
+
+    function renderObl(){
+        const list = document.getElementById('oblList');
+        list.innerHTML = '';
+        obligations.forEach((o,i) => {
+            const row = document.createElement('div');
+            row.className = 'obl-row';
+            row.innerHTML = `
+                <div><label style="font-size:11px;font-weight:700;color:var(--g600)">שם ההתחייבות</label><input type="text" class="oName" data-i="${i}" value="${o.name}"></div>
+                <div><label style="font-size:11px;font-weight:700;color:var(--g600)">תשלום חודשי (₪)</label><input type="number" class="oAmount" data-i="${i}" value="${o.amount}"></div>
+                <span class="rm" data-i="${i}">🗑️</span>`;
+            list.appendChild(row);
+        });
+        list.querySelectorAll('input').forEach(el => el.addEventListener('input', onOblInput));
+        list.querySelectorAll('.rm').forEach(el => el.addEventListener('click', () => { obligations.splice(+el.dataset.i,1); renderObl(); calcP2(); }));
+        calcP2();
+    }
+
+    function onOblInput(e){
+        const i = +e.target.dataset.i;
+        if(e.target.classList.contains('oName')) obligations[i].name = e.target.value;
+        if(e.target.classList.contains('oAmount')) obligations[i].amount = parseFloat(e.target.value)||0;
+        calcP2();
+    }
+
+    document.getElementById('addOblBtn').addEventListener('click', () => {
+        obligations.push({name:'', amount:0});
+        renderObl();
+    });
+
+    function calcP2(){
+        const netIncome = parseFloat(document.getElementById('netIncome').value)||0;
+        const totalObl = obligations.reduce((s,o)=>s+o.amount,0);
+        const disposable = netIncome - totalObl;
+        const ratio = parseFloat(document.getElementById('ratio').value)||35;
+        document.getElementById('ratioVal').textContent = ratio+'%';
+        const maxPay = disposable * ratio/100;
+
+        document.getElementById('rObl').textContent = fmt(totalObl);
+        document.getElementById('rDisposable').textContent = fmt(disposable);
+        document.getElementById('rMaxPay').textContent = fmt(Math.max(0,maxPay));
+
+        const ratioHint = document.getElementById('ratioHint');
+        const ptiWarn = document.getElementById('ptiWarn');
+        if(ratio > 40){
+            ratioHint.innerHTML = '⚠️ מעל 40% - בפועל רוב הבנקים לא יאשרו יחס החזר כזה, גם שהרגולציה הפורמלית מתירה עד 50%.';
+            ratioHint.style.color = '#b91c1c';
+        } else {
+            ratioHint.innerHTML = '✓ בטווח המקובל על הבנקים (עד 40%).';
+            ratioHint.style.color = '#15803d';
+        }
+        ptiWarn.innerHTML = `💡 <strong>חשוב לדעת:</strong> החל מ-1.7.2026, לפי הוראת בנק ישראל המעודכנת, כאשר נבדקת יכולת מימון למשכנתא/הלוואה חדשה, הבנק מחויב לצרף את <strong>כל</strong> ההתחייבויות הקיימות על הנכס (כולל משכנתאות קודמות והלוואות לכל מטרה) יחד לבדיקת יחס החזר אחד כולל - ולא לבדוק כל הלוואה בנפרד כפי שהיה נהוג בעבר. בנוסף, בפועל יחס ההחזר המרבי שהבנקים מאשרים עומד על כ-40% מההכנסה הפנויה, למרות שהתקרה הרגולטורית הפורמלית היא 50%.`;
+    }
+
+    document.getElementById('netIncome').addEventListener('input', calcP2);
+    document.getElementById('ratio').addEventListener('input', calcP2);
+
+    // ===== Mode selector =====
+    document.querySelectorAll('.modebtn').forEach(btn => btn.addEventListener('click', () => {
+        document.querySelectorAll('.modebtn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.modeblock').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('mode-'+btn.dataset.mode).classList.add('active');
+    }));
+
+    // ===== Mode: cumulative =====
+    function calcCum(){
+        const g = parseFloat(document.getElementById('cumGross').value)||0;
+        const t = parseFloat(document.getElementById('cumTax').value)||0;
+        const nh = parseFloat(document.getElementById('cumNiHealth').value)||0;
+        const months = parseFloat(document.getElementById('cumMonths').value)||1;
+        const oneTime = parseFloat(document.getElementById('cumOneTime').value)||0;
+        const netTotal = g - t - nh - oneTime;
+        const avg = netTotal / months;
+        document.getElementById('rNetCum').textContent = fmt(avg);
+    }
+    ['cumGross','cumTax','cumNiHealth','cumMonths','cumOneTime'].forEach(id => document.getElementById(id).addEventListener('input', calcCum));
+
+    // ===== Mode: 3-month average (with reasonableness check vs gross-mode calc) =====
+    function calcAvg3(){
+        const n1 = parseFloat(document.getElementById('net1').value)||0;
+        const n2 = parseFloat(document.getElementById('net2').value)||0;
+        const n3 = parseFloat(document.getElementById('net3').value)||0;
+        const avg = (n1+n2+n3)/3;
+        document.getElementById('rNetAvg3').textContent = fmt(avg);
+
+        const grossCalcNet = calcP1(true); // silent calc from gross mode for comparison
+        const cmp = document.getElementById('avg3Cmp');
+        if(grossCalcNet > 0){
+            const dev = Math.abs(avg - grossCalcNet) / grossCalcNet * 100;
+            if(dev > 15){
+                cmp.innerHTML = `⚠️ סטייה של ${dev.toFixed(1)}% לעומת החישוב לפי ברוטו (${fmt(grossCalcNet)}) - חורגת מ-15%, נדרש הסבר לפער.`;
+                cmp.style.background = '#fff8e1'; cmp.style.borderColor = '#fde68a'; cmp.style.color = '#7c5e00';
+            } else {
+                cmp.innerHTML = `✓ סטייה של ${dev.toFixed(1)}% בלבד לעומת החישוב לפי ברוטו (${fmt(grossCalcNet)}) - בטווח הסביר.`;
+                cmp.style.background = '#eff6ff'; cmp.style.borderColor = '#bfdbfe'; cmp.style.color = 'var(--bd)';
+            }
+        }
+    }
+    ['net1','net2','net3'].forEach(id => document.getElementById(id).addEventListener('input', calcAvg3));
+
+    // ===== Mode: self-employed =====
+    function calcSelfEmp(){
+        const yearIncome = parseFloat(document.getElementById('selfIncomeYear').value)||0;
+        const yearAvg = yearIncome / 12;
+        const cpaIncome = parseFloat(document.getElementById('selfCpaIncome').value)||0;
+        const cpaMonths = parseFloat(document.getElementById('selfCpaMonths').value)||0;
+
+        document.getElementById('rSelfYearAvg').textContent = fmt(yearAvg);
+
+        let final = yearAvg;
+        const cmp = document.getElementById('selfCmp');
+        if(cpaIncome > 0 && cpaMonths > 0){
+            const cpaAvg = cpaIncome / cpaMonths;
+            final = cpaAvg;
+            const dev = yearAvg > 0 ? Math.abs(cpaAvg - yearAvg) / yearAvg * 100 : 0;
+            if(dev > 25){
+                cmp.innerHTML = `⚠️ ההכנסה לפי אישור רו"ח (${fmt(cpaAvg)}/חודש) סוטה ב-${dev.toFixed(1)}% מהממוצע השנתי הקודם - חורגת מ-25%, נדרש הסבר לפער.`;
+                cmp.style.background = '#fff8e1'; cmp.style.borderColor = '#fde68a'; cmp.style.color = '#7c5e00';
+            } else {
+                cmp.innerHTML = `✓ ההכנסה לפי אישור רו"ח (${fmt(cpaAvg)}/חודש) בטווח סביר (${dev.toFixed(1)}% סטייה) לעומת השנה הקודמת.`;
+                cmp.style.background = '#eff6ff'; cmp.style.borderColor = '#bfdbfe'; cmp.style.color = 'var(--bd)';
+            }
+        } else {
+            cmp.innerHTML = '';
+        }
+        document.getElementById('rSelfFinal').textContent = fmt(final);
+    }
+    ['selfIncomeYear','selfCpaIncome','selfCpaMonths'].forEach(id => document.getElementById(id).addEventListener('input', calcSelfEmp));
+
+    calcP1();
+    calcCum();
+    calcAvg3();
+    calcSelfEmp();
+    renderObl();
+    </script>
+</body>
+</html>
